@@ -18,7 +18,7 @@ public class BookstoreBgx151Application {
 	}
 
 	@Bean
-	public CommandLineRunner demoData(BookRepository bookRepository) {
+	public CommandLineRunner bookstoreData(BookRepository bookRepository) {
 		return (args) -> {
 			Book book1 = new Book("Jounin päiväkirja", "Jouni K.", "2022", "0-8471-3177-7", 999999.95);
 			Book book2 = new Book("Jounin kokkikirja", "Jouni K.", "2023", "0-4310-0295-9", 39.95);

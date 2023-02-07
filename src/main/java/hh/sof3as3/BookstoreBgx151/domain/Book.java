@@ -13,7 +13,7 @@ public class Book {
 	private Long id;
 	private String title;
 	private String author;
-	@Column(name = "release_year")
+	@Column(name = "publishing_year")
 	private String year;
 	private String isbn;
 	private double price;
@@ -36,6 +36,10 @@ public class Book {
 		this.price = price;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -54,6 +58,10 @@ public class Book {
 
 	public double getPrice() {
 		return price;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public void setTitle(String title) {
@@ -78,7 +86,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
-				+ "]";
+		return "Book ID: " + id + " [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
+				+ ", price=" + price + "]";
 	}
 }

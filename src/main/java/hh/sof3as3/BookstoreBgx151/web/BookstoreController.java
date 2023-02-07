@@ -1,11 +1,10 @@
 package hh.sof3as3.BookstoreBgx151.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,22 +17,27 @@ public class BookstoreController {
 	@Autowired
 	BookRepository bookRepository;
 
-	@RequestMapping(value = "/books", method = RequestMethod.GET)
+	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
 	public String getBooks(Model model) {
-		List<Book> books = (List<Book>) bookRepository.findAll();
-		model.addAttribute("books", books);
+		model.addAttribute("books", bookRepository.findAll());
 		return "booklist";
 	}
 	
-	@RequestMapping(value="/newbook", method = RequestMethod.GET)
+	@RequestMapping(value="/addbook", method = RequestMethod.GET)
 	public String getNewBookForm(Model model) {
 		model.addAttribute("book", new Book());
 		return "addbook";
 	}
 	
-	@RequestMapping(value="/savebook", method = RequestMethod.GET)
+	@RequestMapping(value="/savebook", method = RequestMethod.POST)
 	public String saveBook(@ModelAttribute Book book, Model model) {
 		bookRepository.save(book);
-		return "redirect:/books";
+		return "redirect:/booklist";
+	}
+	
+	@RequestMapping(value="/deletebook/{id}", method = RequestMethod.GET)
+	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
+		bookRepository.deleteById(bookId);
+		return "redirect:/booklist";
 	}
 }
