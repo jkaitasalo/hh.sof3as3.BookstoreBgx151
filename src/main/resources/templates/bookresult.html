@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Data</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Book Data</h1>
+	<p th:text="'Title: ' +${book.title}" >Title</p>
+	<p th:text="'Author: ' + ${book.author}" >Author</p>
+	<p th:text="'Release year: ' + ${book.year}" >Release Year</p>
+	<p th:text="'ISBN: ' + ${book.isbn}" >ISBN</p>
+	<p th:text="'Price: ' + ${book.price}" >Price</p>
+	<p>Saving action is coming soon!</p>   
+</body>
+</html>

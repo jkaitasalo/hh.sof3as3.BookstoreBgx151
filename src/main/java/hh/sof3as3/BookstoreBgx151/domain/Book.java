@@ -1,9 +1,19 @@
 package hh.sof3as3.BookstoreBgx151.domain;
 
-public class Book {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
+public class Book {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String title;
 	private String author;
+	@Column(name = "release_year")
 	private String year;
 	private String isbn;
 	private double price;
